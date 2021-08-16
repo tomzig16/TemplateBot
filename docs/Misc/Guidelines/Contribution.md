@@ -19,6 +19,11 @@ Example of correct branch names:
 * `FixForIssue45`
 * `web/frontend/home-page-visual-update`
 
+### Commit messages
+
+Commit messages should be short and descriptive what you are commiting to change. If you feel like you need more descriptive commit message consider using in this form:
+`git commit -m "short descriptive title of commit" -n "other notes that you think are needed"` . Meaningless commit messages are not allowed.
+
 ### Pull Requests
 Pull Requests (further PRs) are required to succesfully add your contribution to the main source. PRs are created inside the Github web site - simply go to your branch and press green button at the top which will say "Open Pull Request" or `Compare` > `Open Pull Request`. Make sure your pull request targets master branch (should be by default), unless you are making a PR to someone else's branch at will.
 
