@@ -1,8 +1,11 @@
 # Contribution guidelines
+
 Development process and code consistency is a key factor for clean and easy to change code for everyone in the team. To achieve that everyone must follow these guidelines. Any PR, commit or code contribution that does not follow these guidelines will be considered incorrect and author will be asked to change according to given instructions. In case of failing to follow instructions - contribution will be rejected.
 
 ## Github and VCS
+
 ### Branches
+
 Every change must be submitted via a PR on custom branch. Direct contributors do not have to create forks, just a branch. However, make sure the branch has a name that describes a change/feature and is not using a reserved name from the list below. 
 You are allowed to use any style you prefer (camel case, pascal case etc) as long as it follows the rules of proper naming. Symbols such as `_`, `/`, `-` are also allowed, but do not overdo it.
 
@@ -18,6 +21,8 @@ Example of correct branch names:
 * `Sith-AddHelpCommand`
 * `FixForIssue45`
 * `web/frontend/home-page-visual-update`
+
+Once you have the PR merged make sure to delete the branch.
 
 ### Commit messages
 
