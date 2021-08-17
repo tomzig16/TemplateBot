@@ -56,6 +56,10 @@ Any other notes to reviewers that they may need to consider once reviewing your 
 
 If all of these points are met, your PR should be merged without any issue. If you are waiting for certain reviewer to review it - poke the person, or contact me.
 
+### Merging
+
+Once PR is done, approved and ready to be merged - author can merge it.
+
 ### Issue tracker and task board
 This project is using Github's [[Github Project usage|Project]] and [[Github Issues usage|Issues]] features. Please follow the link to seperate document for more information.
 
