@@ -6,21 +6,23 @@ Development process and code consistency is a key factor for clean and easy to c
 
 ### Branches
 
-Every change must be submitted via a PR on custom branch. Direct contributors do not have to create forks, just a branch. However, make sure the branch has a name that describes a change/feature and is not using a reserved name from the list below. 
+Every change must be submitted via a PR on custom branch. Direct contributors do not have to create forks, just a branch. However, make sure the branch has a name that describes a change/feature and is not using a reserved name from the list below.
 You are allowed to use any style you prefer (camel case, pascal case etc) as long as it follows the rules of proper naming. Symbols such as `_`, `/`, `-` are also allowed, but do not overdo it.
 
 List of reserved branch names:
-* `staging`
-* `draft`
-* `version`
-* `master`
-* `main`
+
+- `staging`
+- `draft`
+- `version`
+- `master`
+- `main`
 
 Example of correct branch names:
-* `templateParser`
-* `Sith-AddHelpCommand`
-* `FixForIssue45`
-* `web/frontend/home-page-visual-update`
+
+- `templateParser`
+- `Sith-AddHelpCommand`
+- `FixForIssue45`
+- `web/frontend/home-page-visual-update`
 
 Once you have the PR merged make sure to delete the branch.
 
@@ -30,17 +32,18 @@ Commit messages should be short and descriptive what you are commiting to change
 `git commit -m "short descriptive title of commit" -n "other notes that you think are needed"` . Meaningless commit messages are not allowed.
 
 ### Pull Requests
+
 Pull Requests (further PRs) are required to succesfully add your contribution to the main source. PRs are created inside the Github web site - simply go to your branch and press green button at the top which will say "Open Pull Request" or `Compare` > `Open Pull Request`. Make sure your pull request targets master branch (should be by default), unless you are making a PR to someone else's branch at will.
 
 In order to succesfully merge your branch with the master branch the following rules must be met:
 
 1. Your changes must follow the predefined code quality (further in this docs)
-2. Your changes are Tested. See more on testing in this doc: [[Testing the code]] 
+2. Your changes are Tested. See more on testing in this doc: [[Testing the code]]
 3. Your branch must have a PR
 4. PR must have at least 1 reviewer
-	1. Without reviewer's approval you can not merge. For more info you can check [[How to review the code]]
-	2. Try to assign reviewer who is knowledgeable in the area where you are changing the code.
-	3. It is recommended to assign more than 1 reviewer if possible and wait for everyone to review
+   1. Without reviewer's approval you can not merge. For more info you can check [[How to review the code]]
+   2. Try to assign reviewer who is knowledgeable in the area where you are changing the code.
+   3. It is recommended to assign more than 1 reviewer if possible and wait for everyone to review
 5. PR must have a proper derscription which must include all information needed about PR for anyone reading the PR. I recommend this small template to follow:
 
 ```
@@ -61,26 +64,20 @@ If all of these points are met, your PR should be merged without any issue. If y
 Once PR is done, approved and ready to be merged - author can merge it.
 
 ### Issue tracker and task board
+
 This project is using Github's [[Github Project usage|Project]] and [[Github Issues usage|Issues]] features. Please follow the link to seperate document for more information.
 
 ## Code quality
 
-### Naming
+### Standard
 
-The project is written using Python 3.6. I don't want to control every single line you write but for consistency's with everyones code the following rules will be enforced:
+The project is written using Python 3.6. I don't want to control every single line you write but for consistency's with everyones code the [pep8 standard](https://www.python.org/dev/peps/pep-0008/) will be enforced.
 
-* Whole code, filenames (except `main.py`) are following `CamelCase`:
-	* Filenames, classes, methods, functions - First letter is capital, every subsequent word is also started with capital letter. 
-		* Example: `def GetUserServer()`, `class UserDataContainer`, `Template.py`
-	* Variable names, arguments, members - first letter lower case, every subsequent capital. 
-		* Example: `userName`, `def SetUserServer(serverNumber)`
-	* Global variable names must follow class, method and function rules, but they also must start with `g_` prefix, which will indicate that they are global
-* Methods and functions must answer "Do what?" question in their name (describe action)
-	* Example: `GetUserName`, `ParseInput` etc.
-* Everything else must answer "What?" question (describe object) 
-	* Example: `userName`, `parsedInput`
-* All capital
-	* All capital is allowed to use only when describing constant "enum-like" classes.
+- pep8 linting can be enabled in most modern IDEs which support Python.
+- If not, you mgiht have to look into plugins, or manually following the pep8 standard.
+- You could also use formatters like autopep8 to automatically format your python code to follow the pep8 standard.
+- You have to be careful with naming, since most formatters ignore names when formatting.
+- Make sure to look into the [style guide](https://www.python.org/dev/peps/pep-0008/) to know more about pep8.
 
 That comes without saying, that every variable, class, argument or file name must make sense. **Better write long names than abbreviate and introduce confusion**. Also, avoid double meaning having names.
 
@@ -94,17 +91,17 @@ Only `#` comments are allowed. Python has `"""` (triple quotations) for multi-li
 
 The following rules are to be considered when working with packages and files
 
-* Every package must contain `__init__.py`
-* Each file must consist code that applies for the file described title (for example dont put discord command parsing related code into database reading file)
-	* Same applies for packages - do not create files in packages that make no sense for to be there
-* As mentioned in Naming part - file names start with capital and end with `.py`
-* File structure must be following:
+- Every package must contain `__init__.py`
+- Each file must consist code that applies for the file described title (for example dont put discord command parsing related code into database reading file)
+  - Same applies for packages - do not create files in packages that make no sense for to be there
+- As mentioned in Naming part - file names start with capital and end with `.py`
+- File structure must be following:
 
 1. package name
 2. imports
-	1. First global imports
-	2. Second local imports
-	3. If you import more than 3 (or 2 lenghty named) resources - consider importing everything
+   1. First global imports
+   2. Second local imports
+   3. If you import more than 3 (or 2 lenghty named) resources - consider importing everything
 3. global variables
 4. classes
 5. functions
@@ -112,4 +109,3 @@ The following rules are to be considered when working with packages and files
 ### Other python specific code
 
 The single entry file is allowed, which is `main.py` in the main project directory.
-
