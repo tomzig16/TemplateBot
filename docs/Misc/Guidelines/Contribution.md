@@ -84,6 +84,10 @@ The project is written using Python 3.6. I don't want to control every single li
 
 That comes without saying, that every variable, class, argument or file name must make sense. **Better write long names than abbreviate and introduce confusion**. Also, avoid double meaning having names.
 
+### Tabs vs Spaces
+
+Through the whole project we use 4 spaces instead of tab. Tab is allowed to be used only when printing strings in log files to keep text vertically aligned where needed.
+
 ### Comments
 
 Most important thing about comments - do not overuse it. Make sure your naming describes object, that makes comments redundant. If you feel like you need to write a comment, double check your code, maybe you can just rename things or write more clear code.
@@ -108,6 +112,10 @@ The following rules are to be considered when working with packages and files
 3. global variables
 4. classes
 5. functions
+
+### Formatting tools
+
+Insert what we are using to make VSCode automatically format our code
 
 ### Other python specific code
 
