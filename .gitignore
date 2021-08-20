@@ -135,3 +135,8 @@ docs/.obsidian/appearance.json
 docs/.obsidian/hotkeys.json
 docs/.obsidian/workspace
 [Ll]ocal/
+
+src/.vscode/*
+
+# Local History for Visual Studio Code
+.history/
