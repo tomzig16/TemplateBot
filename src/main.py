@@ -8,4 +8,8 @@ for filename in os.listdir('src/cogs'):
     if filename.endswith('.py'):
         bot.load_extension(f'cogs.{filename[:-3]}')
 
-bot.run(os.getenv('BOT_TOKEN'))
+@bot.event
+async def on_ready():
+    print(f'Logged in as {bot.user}')
+
+bot.run(str(os.getenv('BOT_TOKEN')))
