@@ -11,7 +11,7 @@ def get_dummy_test_suit():
     suite.addTest(DummyTestCase("test_DummyNameIsChangedCorrectly"))
     return suite
 
-def RunTests():
+def run_all_tests():
     runner = unittest.TextTestRunner()
     # runner.run(get_dummy_test_suit()) # uncomment to run dummy tests
 

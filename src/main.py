@@ -20,7 +20,7 @@ if __name__ == "__main__":
             g_current_environment = sys.argv[1]
     
     if g_current_environment == "test":
-        TestSuites.RunTests()
+        TestSuites.run_all_tests()
     elif g_current_environment == "dev":
         setup_dev_environment()
     else:
