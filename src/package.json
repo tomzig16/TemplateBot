@@ -1,0 +1,22 @@
+{
+  "name": "template-bot",
+  "version": "0.0.1",
+  "description": "Discord bot that forces user defined channel to follow certain rules (templates) before posting messages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomzig16/TemplateBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomzig16/TemplateBot/issues"
+  },
+  "homepage": "https://github.com/tomzig16/TemplateBot#readme",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
+}
