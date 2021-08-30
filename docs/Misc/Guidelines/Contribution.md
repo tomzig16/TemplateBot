@@ -65,24 +65,24 @@ This project is using Github's [[Github Project usage|Project]] and [[Github Iss
 
 ## Code quality
 
-%% Needs to be #rewritten %% 
+Code quality is mainly focusing on good readability and stability. You can ensure good readability by following further guidelines and stability by running tests and reviewing code.
 
 ### Naming
 
-The project is written using Python 3.6. I don't want to control every single line you write but for consistency's with everyones code the following rules will be enforced:
+The project is written using Javascript. I don't want to control every single line you write but for consistency's with everyones code project will be following ES6 version and it's common rules. You can check your VSCode extensions to follow that and if you start you can install `jshint` and use it (for more info check [[VSCode configuration]] doc). ES6 is 
 
-* Whole code, filenames (except `main.py`) are following `CamelCase`:
-	* Filenames, classes, methods, functions - First letter is capital, every subsequent word is also started with capital letter. 
-		* Example: `def GetUserServer()`, `class UserDataContainer`, `Template.py`
-	* Variable names, arguments, members - first letter lower case, every subsequent capital. 
-		* Example: `userName`, `def SetUserServer(serverNumber)`
+* Whole code, filenames (except `index.js`) are following `CamelCase`:
+	* Filenames and functions - First letter is capital, every subsequent word is also started with capital letter. 
+		* Example: `function GetUserServer()`, `class UserDataContainer`, `Template.js`
+	* Variable names, arguments - first letter lower case, every subsequent capital. 
+		* Example: `userName`
 	* Global variable names must follow class, method and function rules, but they also must start with `g_` prefix, which will indicate that they are global
 * Methods and functions must answer "Do what?" question in their name (describe action)
 	* Example: `GetUserName`, `ParseInput` etc.
 * Everything else must answer "What?" question (describe object) 
 	* Example: `userName`, `parsedInput`
-* All capital
-	* All capital is allowed to use only when describing constant "enum-like" classes.
+* For strings use double quotes.
+* Add semicolons on every end of statement.
 
 That comes without saying, that every variable, class, argument or file name must make sense. **Better write long names than abbreviate and introduce confusion**. Also, avoid double meaning having names.
 
@@ -92,34 +92,38 @@ Through the whole project we use 4 spaces instead of tab. Tab is allowed to be u
 
 ### Comments
 
-Most important thing about comments - do not overuse it. Make sure your naming describes object, that makes comments redundant. If you feel like you need to write a comment, double check your code, maybe you can just rename things or write more clear code.
+Most important thing about comments - do not overuse it. Make sure your naming describes object, that makes comments not needed, which in result makes code cleaner. If you feel like you need to write a comment, make sure it answers "why?" that particular code is needed rather than "what it does?". Code already tells what it does.
 
-Only `#` comments are allowed. Python has `"""` (triple quotations) for multi-line comments, but please, do not use those as they are reserved for multiline strings.
+### File structure
 
-### Packages and files
-
-The following rules are to be considered when working with packages and files
-
-* Every package must contain `__init__.py`
-* Each file must consist code that applies for the file described title (for example dont put discord command parsing related code into database reading file)
-	* Same applies for packages - do not create files in packages that make no sense for to be there
-* As mentioned in Naming part - file names start with capital and end with `.py`
 * File structure must be following:
 
-1. package name
-2. imports
+1. Imports
 	1. First global imports
 	2. Second local imports
-	3. If you import more than 3 (or 2 lenghty named) resources - consider importing everything
-3. global variables
-4. classes
-5. functions
+4. global variables
+5. classes
+6. functions
 
 ### Formatting tools
 
 Insert what we are using to make VSCode automatically format our code
 
-### Other python specific code
+### Other specific to JS code rules
 
-The single entry file is allowed, which is `main.py` in the main project directory.
+1. Every code "sentence" must end with semicolon.
+2. Never use `var`. prefer `const` over `let`, but can use both.
+3. Try to minimise use of lambda methods, better write standalone functions - it will be easier to test as well.
+4. use `module.exports` and export all needed functions as objects
+	1. Example: 
+
+```js
+module.exports = {
+	StartServerPokingRoutine: function(){
+		PokeServer();
+	}
+}
+function PokeServer() { ... }
+```
+
 
