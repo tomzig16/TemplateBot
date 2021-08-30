@@ -36,3 +36,5 @@ If you are not using VSCode then you can just run `python [path to main.py] test
 ## Other things
 
 I just wanted to create an additional topic on points when you might think "how do I test this". Usually, if you ask this question the problem comes to the code structure. If you are not sure how to test it, you probably need to redesign your code in a way that methods are invoked, then those methods can be tested. Writing tests (especially for inexperienced) can be quite a task, so if you are still stuck - feel free to contact people and someone will surely help.
+
+%% needs to be #rewritten %%

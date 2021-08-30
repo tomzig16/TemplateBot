@@ -65,6 +65,8 @@ This project is using Github's [[Github Project usage|Project]] and [[Github Iss
 
 ## Code quality
 
+%% Needs to be #rewritten %% 
+
 ### Naming
 
 The project is written using Python 3.6. I don't want to control every single line you write but for consistency's with everyones code the following rules will be enforced:
