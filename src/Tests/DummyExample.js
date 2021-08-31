@@ -1,5 +1,5 @@
-function SumOfTwoMethod(a, b) {
+function sumOfTwoMethod(a, b) {
     return a + b;
 }
 
-module.exports = SumOfTwoMethod;
+module.exports = sumOfTwoMethod;

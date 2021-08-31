@@ -71,14 +71,13 @@ Code quality is mainly focusing on good readability and stability. You can ensur
 
 The project is written using Javascript. I don't want to control every single line you write but for consistency's with everyones code project will be following ES6 version and it's common rules. You can check your VSCode extensions to follow that and if you start you can install `jshint` and use it (for more info check [[VSCode configuration]] doc). ES6 is 
 
-* Whole code, filenames (except `index.js`) are following `CamelCase`:
-	* Filenames and functions - First letter is capital, every subsequent word is also started with capital letter. 
-		* Example: `function GetUserServer()`, `class UserDataContainer`, `Template.js`
-	* Variable names, arguments - first letter lower case, every subsequent capital. 
-		* Example: `userName`
-	* Global variable names must follow class, method and function rules, but they also must start with `g_` prefix, which will indicate that they are global
-* Methods and functions must answer "Do what?" question in their name (describe action)
-	* Example: `GetUserName`, `ParseInput` etc.
+* Filenames - First letter is capital, every subsequent word is also started with capital letter. 
+	* Example:  `Template.js`, `DatabaseController.js`
+* Variable names, function names and arguments - first letter lower case, every subsequent capital. 
+	* Example: `userName`, `function getUserName()`
+* Global variable names must follow class, method and function rules, but they also must start with `g_` prefix, which will indicate that they are global
+* functions must answer "Do what?" question in their name (describe action)
+	* Example: `getUserName`, `parseInput` etc.
 * Everything else must answer "What?" question (describe object) 
 	* Example: `userName`, `parsedInput`
 * For strings use double quotes.
