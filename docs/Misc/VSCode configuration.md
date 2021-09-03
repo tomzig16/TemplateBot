@@ -20,6 +20,4 @@ We are using ES6 rules but jshint is set to follow some older conventions. To ma
 4.  look for `"jshint.options": {},`
 5.  change it to `"jshint.options": {"esversion": 6},` by clicking on Edit on the left
 
-## Auto Formating
-
 %% List of todos todo things. Keeping this list as comment makes them appear in the main todo plugin browser, but does not render in Preview document window %%
