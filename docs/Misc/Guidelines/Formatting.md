@@ -92,3 +92,9 @@ let g:prettier#config#end_of_line = get(g:, 'prettier#config#end_of_line', 'lf')
 If the instructions above don't work:
 - Try using the npm/yarn versions [[Formatting#Using Prettier with npm or yarn]].
 - Refer to their [Github](https://github.com/prettier/vim-prettier).
+
+
+## Installign prettier on VSCode
+
+If you are using VSCode you can install [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extensions for VSCode. After installing it go to VSCode settings (`Ctrl` + `,`) and search for `format on save` and on a given setting make sure to enable it. ![[FormatOnSave in VSCode settings example.png]]
+After that search for `prettier require config` and make sure its ticked as well. This setting will tell prettier to use configs from `.prettierrc` file in the root directory, instead of default or any custom ones. ![[PrettierRequireConfig setting example.png]]

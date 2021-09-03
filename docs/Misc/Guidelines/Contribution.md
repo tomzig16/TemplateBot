@@ -106,7 +106,7 @@ Most important thing about comments - do not overuse it. Make sure your naming d
 
 ### Formatting tools
 
-Insert what we are using to make VSCode automatically format our code
+We are using Prettier to keep our code consistent between collaborators. Instructions on how to install prettier can be found in [[Formatting]] document.
 
 ### Other specific to JS code rules
 
