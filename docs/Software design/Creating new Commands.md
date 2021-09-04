@@ -24,7 +24,7 @@ catch (error) {
 `clientID` is the id of the application (not the token of the bot) and guildID is the id of the guild used to test the bot. The id can be obtained by right clicking on the server icon and clicking 'Copy ID'.
 For global command, a similar script can be used except `Routes.applicationGuildCommands` will be replaced by `Routes.applicationCommands` and only the application id will be necessary.
 ### Creating a command
-One file should host a single command and this file should go in the 'slashFiles' directory. The name of the file should be in camelCase. The file should use the SlashCommandBuilder function and should follow a format like:
+One file should host a single command and this file should go in the 'slashFiles' directory. The name of the file should be in PascalCase. The file should use the SlashCommandBuilder function and should follow a format like:
 ```js
 const { SlashCommandBuilder } = require('@discordjs/builders');
 module.exports = {
