@@ -4,13 +4,13 @@ const botInstance = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 const slashFiles = fs
-    .readdirSync("./slashFiles/")
+    .readdirSync("./SlashFiles/")
     .filter((file) => file.endsWith(".js"));
 botInstance.slashCommands = new Collection();
 const botCommands = [];
 // reading slash command files
 for (const file of slashFiles) {
-    const command = require(`../slashFiles/${file}`);
+    const command = require(`../SlashFiles/${file}`);
     botInstance.slashCommands.set(command.data.name, command);
     botCommands.push(command.data.toJSON());
 }
