@@ -6,11 +6,11 @@ const botInstance = new Client({
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("ping")
-        .setDescription("Check the bot's response time"),
+        .setDescription("Check the bot's response time 🏓️"),
     async execute(interaction) {
         var ping = interaction.createdTimestamp - interaction.createdTimestamp;
         var botPing = Math.round(botInstance.ws.ping);
         const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true });
-        interaction.editReply(`Roundtrip latency: ${sent.createdTimestamp - interaction.createdTimestamp}ms`);
+        interaction.editReply(`Roundtrip latency: ${sent.createdTimestamp - interaction.createdTimestamp}ms :ping_pong:`);
     },
 };

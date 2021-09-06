@@ -18,13 +18,9 @@
   },
   "homepage": "https://github.com/tomzig16/TemplateBot#readme",
   "dependencies": {
-<<<<<<< HEAD
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0"
-=======
-    "discord.js": "^13.1.0"
->>>>>>> ffedd01f9a97e0e53871869fd801eb4c0960543f
   },
   "devDependencies": {
     "jest": "^27.1.0",
