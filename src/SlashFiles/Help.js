@@ -27,7 +27,7 @@ module.exports = {
                 .setTitle("Commands")
                 .setURL("https://discord.js.org/")
                 .setDescription("All list of commands you can use")
-                .setThumbnail("https://i.imgur.com/AfFp7pu.png")
+                .setThumbnail("https://cdn.discordapp.com/icons/783759890899271763/a_96c6817e53c2283cbe96c34cba04093b.webp?size=256")
                 .addFields(
                     { name: `${command_names["ctempl"]["bname"]} (${command_names["ctempl"]["sname"]})`, value: command_names["ctempl"]["description"] },
 
@@ -36,7 +36,7 @@ module.exports = {
                     { name: "/Help", value: "Usage: /help command:command_name" },
                 )
                 .setTimestamp()
-                .setFooter("KalleTech", "https://i.imgur.com/AfFp7pu.png");
+                .setFooter("KalleTech", "https://cdn.discordapp.com/icons/783759890899271763/a_96c6817e53c2283cbe96c34cba04093b.webp?size=256");
             interaction.reply({ embeds: [allCommands] });
         } else {
             Object.entries(command_names).forEach(([key, value]) => {
