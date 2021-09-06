@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 
-module.exports.makeListingEmbedFromArray = (informationObject) => {
+module.exports.makeListingEmbedFromObject = (informationObject) => {
     const listingEmbed = new MessageEmbed()
         .setTitle(informationObject.title)
         .setAuthor(

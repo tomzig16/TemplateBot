@@ -1,5 +1,4 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { makeListingEmbedFromArray } = require("../Functions/MakeEmbed.js");
 
 module.exports = {
     data: new SlashCommandBuilder()

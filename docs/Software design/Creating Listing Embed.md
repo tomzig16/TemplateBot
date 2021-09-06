@@ -9,7 +9,7 @@ To get an embed which can be sent to the channel, there's a function in `src/Fun
 - Use a relative file location in the file you want to use it.
 - To import a file, you have to include a require statement at the top of your file.
 - Here's an example for this function, if your file is located in SlashFiles: 
-	`const { makeListingEmbedFromArray }  = require("../Functions/MakeEmbed.js")`
+	`const { makeListingEmbedFromObject }  = require("../Functions/MakeEmbed.js")`
 
 #### Create the object
 
