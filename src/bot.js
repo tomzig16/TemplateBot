@@ -4,7 +4,6 @@ const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-require("dotenv").config()
 // importing tokens from env variableß
 const botToken = process.env.BOT_TOKEN;
 const clientID = process.env.CLIENT_ID;
