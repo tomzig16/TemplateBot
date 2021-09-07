@@ -17,16 +17,21 @@ const botInstance = new Client({
 botInstance.slashCommands = new Collection();
 
 // read the files
-const slashFiles = fs
-    .readdirSync("./SlashFiles")
+const commandFiles = fs
+    .readdirSync("./Commands")
     .filter((file) => file.endsWith(".js"));
 const eventFiles = fs
     .readdirSync("./EventFiles")
     .filter((file) => file.endsWith(".js"));
 
-// bot configuration
+
 function configureBot() {
-    // running event listeners
+    setupEventListeners();
+    setupCommands();
+}
+
+function setupEventListeners() {
+    let nOfEvents = 0;
     for (const file of eventFiles) {
         const event = require(`./EventFiles/${file}`);
         if (event.once) {
@@ -34,26 +39,26 @@ function configureBot() {
         } else {
             botInstance.on(event.name, (...args) => event.execute(...args));
         }
+        nOfEvents++;
     }
-    // reading slash command files
-    for (const file of slashFiles) {
-        const command = require(`./SlashFiles/${file}`);
+    console.log(`Events are read. In total registered ${nOfEvents} events.`)
+}
+
+function setupCommands() {
+    for (const file of commandFiles) {
+        const command = require(`./Commands/${file}`);
         botInstance.slashCommands.set(command.data.name, command);
         botCommands.push(command.data.toJSON());
     }
-    return true;
-}
 
-// setup slash commands
-function slashCommandSetup() {
     const rest = new REST({ version: "9" }).setToken(botToken);
     (async () => {
         try {
-            console.log("Started refreshing application (/) commands.");
+            console.log("Started refreshing application commands.");
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
-            console.log("Successfully reloaded application (/) commands.");
+            console.log("Successfully reloaded application commands.");
         } catch (error) {
             console.error(error);
         }
@@ -72,7 +77,6 @@ module.exports = {
     // running all the functions
     execute() {
         configureBot();
-        slashCommandSetup();
         botRun(botToken);
     },
 };
