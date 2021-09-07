@@ -1,1 +1,3 @@
-console.log("Hello world!");
+console.log("hello world");
+const botInstance = require("./bot.js");
+botInstance.execute();
