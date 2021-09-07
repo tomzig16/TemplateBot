@@ -4,10 +4,15 @@ const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 
-// importing tokens from env variableß
-const botToken = process.env.BOT_TOKEN;
-const clientID = process.env.CLIENT_ID;
-const guildID = process.env.GUILD_ID;
+let activeEnvironment = "";
+// These variables are set based on active environment inside 
+// configureEnvironment function
+let botToken = "";
+let clientID = "";
+let guildID = "";
+
+let isBotConfigured = false;
+
 
 //setting up the variables
 const botCommands = [];
@@ -26,8 +31,28 @@ const eventFiles = fs
 
 
 function configureBot() {
+    configureEnvironment();
     setupEventListeners();
     setupCommands();
+}
+
+function configureEnvironment() {
+    if(activeEnvironment === "TEST") {
+        botToken = process.env.BOT_TEST_TOKEN;
+    }
+    else if (activeEnvironment === "DEV") {
+        botToken = process.env.BOT_DEV_TOKEN;
+    }
+    else if (activeEnvironment === "PROD") {
+        botToken = process.env.BOT_PROD_TOKEN;
+    }
+    else {
+        throw "Unknown environment is being set. Aborting...";
+    }
+    // TODO: in the future once we run bot in prod, these will most likely also depend on environment
+    clientID = process.env.CLIENT_ID;
+    guildID = process.env.GUILD_ID;
+    isBotConfigured = true;
 }
 
 function setupEventListeners() {
@@ -41,7 +66,7 @@ function setupEventListeners() {
         }
         nOfEvents++;
     }
-    console.log(`Events are read. In total registered ${nOfEvents} events.`)
+    console.log(`Events are read. In total registered ${nOfEvents} events.`);
 }
 
 function setupCommands() {
@@ -52,17 +77,17 @@ function setupCommands() {
     }
 
     const rest = new REST({ version: "9" }).setToken(botToken);
+    console.log("Started refreshing application commands.");
     (async () => {
         try {
-            console.log("Started refreshing application commands.");
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
-            console.log("Successfully reloaded application commands.");
         } catch (error) {
             console.error(error);
         }
     })();
+    console.log("Successfully reloaded application commands.");
     return true;
 }
 
@@ -75,8 +100,18 @@ function botRun(botToken) {
 module.exports = {
     name: "botInstance",
     // running all the functions
-    execute() {
-        configureBot();
+    execute(environment) {
+        if(isBotConfigured === false) {
+            console.log("Bot is not configured yet... running configuration.");
+            this.configureBot(environment);
+        }
         botRun(botToken);
+    },
+    configureBot(environment) {
+        activeEnvironment = environment;
+        configureBot();
+    },
+    getKnownCommands() {
+        return botCommands;
     },
 };
