@@ -4,6 +4,7 @@
   "description": "Discord bot that forces user defined channel to follow certain rules (templates) before posting messages.",
   "main": "index.js",
   "scripts": {
+    "format": "npx prettier --write .",
     "start": "node index.js",
     "test": "jest"
   },
