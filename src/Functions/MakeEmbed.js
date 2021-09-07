@@ -11,8 +11,9 @@ module.exports.makeListingEmbedFromObject = (informationObject) => {
         .setThumbnail(informationObject.thumbnailImageURL);
 
     const fieldsList = informationObject.listingInfoObjectsArray;
-    for (infoObject in fieldsList) {
+    for (let infoObject of fieldsList) {
         listingEmbed.addField(infoObject.title, infoObject.value, true);
     }
+    console.log(listingEmbed);
     return listingEmbed;
 };
