@@ -30,9 +30,9 @@ function configureBot() {
     for (const file of eventFiles) {
         const event = require(`./EventFiles/${file}`);
         if (event.once) {
-        botInstance.once(event.name, (...args) => event.execute(...args));
+            botInstance.once(event.name, (...args) => event.execute(...args));
         } else {
-        botInstance.on(event.name, (...args) => event.execute(...args));
+            botInstance.on(event.name, (...args) => event.execute(...args));
         }
     }
     // reading slash command files
@@ -46,13 +46,13 @@ function configureBot() {
 
 // setup slash commands
 function slashCommandSetup() {
-	const rest = new REST({ version: "9" }).setToken(botToken);
-	(async () => {
+    const rest = new REST({ version: "9" }).setToken(botToken);
+    (async () => {
         try {
-		console.log("Started refreshing application (/) commands.");
-		await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
-            body: botCommands,
-        });
+            console.log("Started refreshing application (/) commands.");
+            await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
+                body: botCommands,
+            });
             console.log("Successfully reloaded application (/) commands.");
         } catch (error) {
             console.error(error);
@@ -68,11 +68,11 @@ function botRun(botToken) {
 }
 
 module.exports = {
-	name: 'botInstance',
+    name: "botInstance",
     // running all the functions
-	execute() {
+    execute() {
         configureBot();
         slashCommandSetup();
         botRun(botToken);
-	}
-}
+    },
+};
