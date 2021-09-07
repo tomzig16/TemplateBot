@@ -3,7 +3,15 @@ const { Client, Collection, Intents } = require("discord.js");
 const botInstance = new Client({
     intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
-
+const slashFiles = fs
+    .readdirSync("./SlashFiles/")
+    .filter((file) => file.endsWith(".js"));
+botInstance.slashCommands = new Collection();
+// reading slash command files
+for (const file of slashFiles) {
+    const command = require(`../SlashFiles/${file}`);
+    botInstance.slashCommands.set(command.data.name, command);
+}
 module.exports = {
     name: "interactionCreate",
     async execute(interaction) {
