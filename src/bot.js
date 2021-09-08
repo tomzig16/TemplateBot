@@ -38,7 +38,7 @@ function configureBot() {
     // reading slash command files
     for (const file of slashFiles) {
         const command = require(`./SlashFiles/${file}`);
-        botInstance.slashCommands.set(command.title, command);
+        botInstance.slashCommands.set(command.data.name, command);
         botCommands.push(command.data.toJSON());
     }
     const helpCommand = require(`./SlashFiles/Help.js`);

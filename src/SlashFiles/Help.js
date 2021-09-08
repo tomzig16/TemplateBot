@@ -18,9 +18,6 @@ module.exports = {
         }
         commandsInfo = allKnownCommands;
     },
-    name: "Help",
-    description:
-        "Command to get info about a specific command or listing all commands",
     data: new SlashCommandBuilder()
         .setName("help")
         .setDescription("Feeling lost❓️"),
@@ -30,7 +27,6 @@ module.exports = {
         if (commandName == null) {
             let allCommandsEmbed = new MessageEmbed()
                 .setTitle("Commands")
-                .setURL("https://discord.js.org/")
                 .setDescription("All list of commands you can use")
                 .setTimestamp()
                 .setFooter(interaction.guild.name, interaction.guild.iconURL());

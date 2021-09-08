@@ -4,8 +4,6 @@ const { Client, Intents } = require("discord.js")
 
 
 module.exports = {
-    name: "Ping",
-    description: "Check bot latency",
     data: new SlashCommandBuilder()
         .setName("ping")
         .setDescription("Check the bot's response time 🏓️"),
