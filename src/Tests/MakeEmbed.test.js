@@ -28,5 +28,5 @@ test("Gives dummy object as input and checks if it's right", () => {
         provider: null,
         footer: null,
     };
-    expect(makeListingEmbedFromObject(obj).toBe(output));
+    expect(makeListingEmbedFromObject(obj)).toEqual(output);
 });

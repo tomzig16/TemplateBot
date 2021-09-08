@@ -14,6 +14,5 @@ module.exports.makeListingEmbedFromObject = (informationObject) => {
     for (let infoObject of fieldsList) {
         listingEmbed.addField(infoObject.title, infoObject.value, true);
     }
-    console.log(listingEmbed);
     return listingEmbed;
 };
