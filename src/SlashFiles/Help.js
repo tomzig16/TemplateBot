@@ -22,7 +22,6 @@ module.exports = {
         .setName("help")
         .setDescription("Feeling lost❓️"),
     async execute(interaction) {
-
         const commandName = interaction.options.getString("command");
         if (commandName == null) {
             let allCommandsEmbed = new MessageEmbed()
