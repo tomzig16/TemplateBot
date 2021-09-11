@@ -41,6 +41,8 @@ function configureBot() {
         botInstance.slashCommands.set(command.data.name, command);
         botCommands.push(command.data.toJSON());
     }
+    const helpCommand = require(`./SlashFiles/Help.js`);
+    helpCommand.loadKnownCommands(botCommands);
     return true;
 }
 
