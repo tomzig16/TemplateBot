@@ -22,17 +22,14 @@ module.exports = {
         .setName("help")
         .setDescription("Feeling lost❓️"),
     async execute(interaction) {
-        const commandName = interaction.options.getString("command");
-        if (commandName == null) {
-            let allCommandsEmbed = new MessageEmbed()
-                .setTitle("Commands")
-                .setDescription("All list of commands you can use")
-                .setTimestamp()
-                .setFooter(interaction.guild.name, interaction.guild.iconURL());
-            for (let command of commandsInfo) {
-                allCommandsEmbed.addField(command.name, command.description);
-            }
-            interaction.reply({ embeds: [allCommandsEmbed] });
+        let allCommandsEmbed = new MessageEmbed()
+            .setTitle("Commands")
+            .setDescription("All list of commands you can use")
+            .setTimestamp()
+            .setFooter(interaction.guild.name, interaction.guild.iconURL());
+        for (let command of commandsInfo) {
+            allCommandsEmbed.addField(command.name, command.description);
         }
+        interaction.reply({ embeds: [allCommandsEmbed] });
     },
 };
