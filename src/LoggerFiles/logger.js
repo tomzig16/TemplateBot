@@ -1,13 +1,12 @@
 var fs = require("fs");
 
 class Logger {
-    constructor(env) {
+    constructor(env, level, msg) {
         this.env = env;
+        this.level = level;
+        this.msg = msg;
     }
 
-    log(level, msg) {
-        return;
-    }
 
     catchlog(exception) {
         if (fs.existsSync("logs/botlogs.log")) {
