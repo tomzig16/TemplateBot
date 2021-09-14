@@ -5,6 +5,7 @@ class Logger {
         this.env = env;
     }
 
+    // These functions return true/false if the env is prod/test/dev
     dev_env() {
         return this.env === "DEV";
     }
@@ -17,18 +18,34 @@ class Logger {
         return this.env === "TEST";
     }
 
+    current_time() {
+        const date = new Date();
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const hour = date.getHours();
+        const minute = date.getMinutes();
+        const seconds = ((date.getMilliseconds() % 60000) / 1000).toFixed(0);
+
+        const result = "[" + day + ":" + month + ":" + year + " " + hour + ":" + minute + ":" + seconds + "]";
+        return result;
+    }
+
     writeToLogFile(filename, error, type) {
+        const time = this.current_time()
+        // Check if the error is a function (ie a exception)
         if (typeof error == "object") {
+            // Append to last to file
             fs.appendFile(
                 "logs/" + filename,
-                type + " " + error.stack + "\n" + error.name + "\n" + error.message,
+                time + " " + type + " " + error.stack + "\n" + error.name + "\n" + error.message,
                 function (err) {
                     if (err) throw err;
                     console.log("Updated!");
                 }
             );
         } else {
-            fs.appendFile("logs/" + filename, type + " " + error + "\n", function (err) {
+            fs.appendFile("logs/" + filename, time + " " + type + " " + error + "\n", function (err) {
                 if (err) throw err;
                 console.log("Updated!");
             });

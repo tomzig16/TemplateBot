@@ -7,6 +7,7 @@ const Logger = require("./LoggerFiles/logger.js");
 
 require("dotenv").config();
 
+// Initialize Logger
 const logger = new Logger("DEV");
 
 // importing tokens from env variableß
