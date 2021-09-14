@@ -53,8 +53,8 @@ class Logger {
     }
 
     catchlog(exception) {
-        this.writeToLogFile("botlogs.log", exception);
-        if (this.dev_env()) {
+        this.writeToLogFile("botlogs.log", exception, "[ERROR]");
+        if (this.dev_env() || this.prod_env()) {
             console.log(exception);
         }
     }
