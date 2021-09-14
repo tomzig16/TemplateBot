@@ -3,6 +3,11 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
+const Logger = require("./LoggerFiles/logger.js");
+
+require("dotenv").config();
+
+const logger = new Logger("DEV");
 
 // importing tokens from env variableß
 const botToken = process.env.BOT_TOKEN;
@@ -51,7 +56,7 @@ function slashCommandSetup() {
     const rest = new REST({ version: "9" }).setToken(botToken);
     (async () => {
         try {
-            console.log("Started refreshing application (/) commands.");
+            logger.log("info", "Started refreshing application (/) commands.");
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
