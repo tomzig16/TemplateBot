@@ -21,6 +21,7 @@ The prettier config file is included in `src` so make sure you open `src` or its
 - To format your code with the npm version, run `npx prettier --write .`
 - To format your code with the yarn version, run `yarn prettier --write .`
 
+After installation you can run `npm run format` and it will automatically format all documents.
 
 ## Installing Prettier in Vim
 

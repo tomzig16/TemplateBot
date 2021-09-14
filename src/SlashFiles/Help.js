@@ -41,5 +41,6 @@ module.exports = {
             }
             interaction.reply({ embeds: [allCommandsEmbed] });
         }
+        interaction.reply({ embeds: [allCommandsEmbed] });
     },
 };
