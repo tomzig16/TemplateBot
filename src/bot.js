@@ -60,9 +60,9 @@ function slashCommandSetup() {
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
-            console.log("Successfully reloaded application (/) commands.");
+            logger.log("info", "Successfully reloaded application (/) commands.");
         } catch (error) {
-            console.error(error);
+            logger.catchlog(error);
         }
     })();
     return true;
