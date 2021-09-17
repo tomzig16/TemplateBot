@@ -1,5 +1,6 @@
-const commandInfoJson = require("../Data/CommandInfo.json");
 const stringConstants = require("../Data/StringConstants");
+const commandInfoJson = require(stringConstants.paths["commandInfoPath"]);
+
 const fs = require("fs");
 let commandDescriptionExists = true;
 
@@ -15,13 +16,14 @@ for (j in slashFiles) {
 }
 
 for (j in lowerCaseSlashFiles) {
-    try{
+    // try{
     if (
         commandInfoJson[lowerCaseSlashFiles[j].split(".")[0]]["description"] ==
         undefined
     ) {
-    }} catch (e) {
-        commandDescriptionExists = false;
-    }
-}
+    }}
+    // catch (e) {
+        // commandDescriptionExists = false;
+    // }
+
 module.exports = commandDescriptionExists;

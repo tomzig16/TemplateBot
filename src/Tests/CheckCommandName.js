@@ -1,5 +1,5 @@
-const commandInfoJson = require("../Data/CommandInfo.json");
 const stringConstants = require("../Data/StringConstants");
+const commandInfoJson = require(stringConstants.paths["commandInfoPath"]);
 const fs = require("fs");
 let commandNameExists = true;
 
