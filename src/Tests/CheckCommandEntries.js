@@ -1,54 +1,36 @@
 const commandInfoJson = require("../Data/CommandInfo.json");
+const stringConstants = require("../Data/StringConstants");
+const fs = require("fs");
 const bot = require("../bot");
 bot.execute(false);
 const commandInfo = bot.commandInfo;
-var isCommandEntriesCorrectBol = true;
+var isCommandEntriesCorrectBol;
 
-function sortObjectByKeys(o) {
-    return Object.keys(o)
-        .sort()
-        .reduce((r, k) => ((r[k] = o[k]), r), {});
+let slashFiles = fs
+    .readdirSync(stringConstants.paths["slashFilesPath"])
+    .filter((file) => file.endsWith(".js"));
+
+let lowerCaseSlashFiles = [];
+
+for (j in slashFiles) {
+    lowerCaseSlashFiles.push(String(slashFiles[j]).toLowerCase());
 }
 
-function getUniqueValue(array, excluded) {
-    let newArr, temp, temp1;
+for (i in lowerCaseSlashFiles) {
+    try {
 
-    check1 = array.filter(function (value) {
-        return excluded.indexOf(value) == -1;
-    });
-
-    check2 = excluded.filter(function (value) {
-        return array.indexOf(value) == -1;
-    });
-
-    output = check1.concat(check2);
-
-    return output;
+    
+    if (
+        commandInfoJson[lowerCaseSlashFiles[i].split(".")[0]]["name"] ==
+            commandInfo[i]["name"] &&
+        commandInfoJson[lowerCaseSlashFiles[i].split(".")[0]]["description"] ==
+            commandInfo[i]["description"]
+    ) {
+        isCommandEntriesCorrectBol = true;
+    }} catch (e) {
+        isCommandEntriesCorrectBol = false;
+    }
 }
 
-var commandInfoIndexes = [];
-var commandInfoJsonIndexes = [];
 
-for (const i in commandInfo) {
-    commandInfoIndexes.push(Number(i));
-}
-for (const j in sortObjectByKeys(commandInfoJson)) {
-    var index = Object.keys(sortObjectByKeys(commandInfoJson)).indexOf(j);
-    commandInfoJsonIndexes.push(index);
-}
-
-const commandInfoNotMentionedInJson =
-    commandInfo[getUniqueValue(commandInfoIndexes, commandInfoJsonIndexes)];
-
-if (commandInfoNotMentionedInJson != undefined) {
-    isCommandEntriesCorrectBol = false;
-    throw new Error(
-        `Found ${commandInfoNotMentionedInJson["name"]} command but its information not mentioned in /Data/commandInfo.json file`
-    );
-}
-
-function isCommandEntriesCorrect() {
-    return isCommandEntriesCorrectBol;
-}
-
-module.exports = { commandEntries: isCommandEntriesCorrect };
+module.exports = {commandEntries: isCommandEntriesCorrectBol};

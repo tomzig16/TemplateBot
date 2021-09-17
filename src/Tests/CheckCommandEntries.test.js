@@ -1,5 +1,5 @@
-const { commandEntries } = require("./CheckCommandEntries");
+const {commandEntries} = require("./CheckCommandEntries");
 
-test("Checks if command entries are correct and valid", () => {
-    expect(commandEntries()).toBe(true);
+test("Please make sure that command names and descriptions are the same as in json", () => {
+    expect(commandEntries).toBe(true);
 });
