@@ -4,7 +4,6 @@ const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const stringConstants = require("./Data/StringConstants");
-console.log(stringConstants);
 // importing tokens from env variableß
 require("dotenv").config();
 const botToken = process.env.BOT_TOKEN;
@@ -74,9 +73,12 @@ function botRun(botToken) {
 module.exports = {
     name: "botInstance",
     // running all the functions
-    execute() {
+    execute(runBot) {
         configureBot();
-        slashCommandSetup();
-        botRun(botToken);
+        if (runBot) {
+            slashCommandSetup();
+            botRun(botToken);
+        }
     },
+    commandInfo: botCommands,
 };

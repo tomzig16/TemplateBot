@@ -1,7 +1,6 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const stringConstants = require("../Data/StringConstants");
-
-const commandInfo = stringConstants.readCommandsInfoJson;
+const { readCommandsInfoJson } = require("../Data/StringConstants");
+const commandInfo = readCommandsInfoJson;
 
 module.exports = {
     data: new SlashCommandBuilder()
