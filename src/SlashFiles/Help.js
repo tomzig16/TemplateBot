@@ -23,23 +23,19 @@ module.exports = {
         .setName(commandsInfoJson["help"]["name"])
         .setDescription(commandsInfoJson["help"]["description"]),
     async execute(interaction) {
-        const commandName = interaction.options.getString("command");
-        if (commandName == null) {
-            let allCommandsEmbed = new MessageEmbed()
-                .setTitle(
-                    commandsInfoJson["help"]["viewAllCommandsEmbed"]["title"]
-                )
-                .setDescription(
-                    commandsInfoJson["help"]["viewAllCommandsEmbed"][
-                        "description"
-                    ]
-                )
-                .setTimestamp()
-                .setFooter(interaction.guild.name, interaction.guild.iconURL());
-            for (let command of commandsInfo) {
-                allCommandsEmbed.addField(command.name, command.description);
-            }
-            interaction.reply({ embeds: [allCommandsEmbed] });
+        let allCommandsEmbed = new MessageEmbed()
+            .setTitle(
+                commandsInfoJson["help"]["viewAllCommandsEmbed"]["title"]
+            )
+            .setDescription(
+                commandsInfoJson["help"]["viewAllCommandsEmbed"][
+                    "description"
+                ]
+            )
+            .setTimestamp()
+            .setFooter(interaction.guild.name, interaction.guild.iconURL());
+        for (let command of commandsInfo) {
+            allCommandsEmbed.addField(command.name, command.description);
         }
         interaction.reply({ embeds: [allCommandsEmbed] });
     },
