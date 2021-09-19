@@ -3,7 +3,7 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const Logger = require("./LoggerFiles/logger.js");
+const Logger = require("./LoggerFiles/Logger.js");
 
 require("dotenv").config();
 
