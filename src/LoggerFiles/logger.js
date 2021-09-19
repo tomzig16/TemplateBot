@@ -24,12 +24,12 @@ class Logger {
         return this.env === "PROD";
     }
 
-    test_env() {
+    testEnv() {
         return this.env === "TEST";
     }
 
     // Returns the current time in [DD/MM/YYYY HH/MM/SS] format
-    current_time() {
+    currentTime() {
         const date = new Date();
         const year = date.getFullYear();
         const month = date.getMonth() + 1;
@@ -43,7 +43,7 @@ class Logger {
     }
 
     writeToLogFile(filename, error, type) {
-        const time = this.current_time()
+        const time = this.currentTime()
         // Check if the error is a function (ie a exception)
         if (typeof error == "object") {
             // Append to last to file
@@ -64,17 +64,17 @@ class Logger {
     log(level, msg) {
         level = level.toLowerCase();
 
-        if (level === "warning") {
+        if (level === this.LogLevelWarning) {
             if (this.devEnv() || this.prod_env()) {
                 console.log(msg);
             }
             this.writeToLogFile("botlogs.log", msg, '[WARNING]');
-        } else if (level === "info") {
+        } else if (level === this.LogLevelInfo) {
             if (this.devEnv()) {
                 console.log(msg);
             }
             this.writeToLogFile("botlogs.log", msg, '[INFO]')
-        } else if (level == "error") {
+        } else if (level == this.LogLevelError) {
             this.writeToLogFile("botlogs.log", msg, "[ERROR]");
             if (this.devEnv() || this.prod_env()) {
                 console.log(msg);
