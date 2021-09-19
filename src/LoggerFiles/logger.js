@@ -3,8 +3,11 @@ var fs = require("fs");
 class Logger {
     constructor(env) {
         this.env = env;
+        this.LogLevelWarning = "warning";
+        this.LogLevelInfo = "info"
+        this.LogLevelError = "error"
+
         if (this.checkIfLogFileExists()) {
-            console.log('something')
             fs.rename('logs/botlogs.log', 'logs/old_botlog.txt', () => { return; });
         }
     }
@@ -25,6 +28,7 @@ class Logger {
         return this.env === "TEST";
     }
 
+    // Returns the current time in [DD/MM/YYYY HH/MM/SS] format
     current_time() {
         const date = new Date();
         const year = date.getFullYear();
@@ -48,13 +52,11 @@ class Logger {
                 time + " " + type + " " + error.stack + "\n" + error.name + "\n" + error.message,
                 function (err) {
                     if (err) throw err;
-                    console.log("Updated!");
                 }
             );
         } else {
             fs.appendFile("logs/" + filename, time + " " + type + " " + error + "\n", function (err) {
                 if (err) throw err;
-                console.log("Updated!");
             });
         }
     }
@@ -72,15 +74,13 @@ class Logger {
                 console.log(msg);
             }
             this.writeToLogFile("botlogs.log", msg, '[INFO]')
+        } else if (level == "error") {
+            this.writeToLogFile("botlogs.log", msg, "[ERROR]");
+            if (this.devEnv() || this.prod_env()) {
+                console.log(msg);
+            }
         }
 
-    }
-
-    logerror(exception) {
-        this.writeToLogFile("botlogs.log", exception, "[ERROR]");
-        if (this.devEnv() || this.prod_env()) {
-            console.log(exception);
-        }
     }
 }
 

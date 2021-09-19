@@ -57,13 +57,13 @@ function slashCommandSetup() {
     const rest = new REST({ version: "9" }).setToken(botToken);
     (async () => {
         try {
-            logger.log("info", "Started refreshing application (/) commands.");
+            logger.log(logger.LogLevelInfo, "Started refreshing application (/) commands.");
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
-            logger.log("info", "Successfully reloaded application (/) commands.");
+            logger.log(logger.LogLevelInfo, "Successfully reloaded application (/) commands.");
         } catch (error) {
-            logger.catchlog(error);
+            logger.log(logger.LogLevelError, error);
         }
     })();
     return true;
