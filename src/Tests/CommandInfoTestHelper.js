@@ -23,25 +23,27 @@ function setCommandNamesFromFiles() {
 }
 
 module.exports = {
-    setupTestsData: function() {
+    setupTestsData: function () {
         setCommandNamesFromFiles();
     },
 
-    doesCommandUseRequiredFieldsFromJSON: function() {
-        for(let botCommand of botsCommandInfo) {
-            for(let requiredField of requiredFields) {
-                if(botCommand[requiredField] !== commandInfoJson[botCommand.name][requiredField])
-                {
+    doesCommandUseRequiredFieldsFromJSON: function () {
+        for (let botCommand of botsCommandInfo) {
+            for (let requiredField of requiredFields) {
+                if (
+                    botCommand[requiredField] !==
+                    commandInfoJson[botCommand.name][requiredField]
+                ) {
                     return false;
                 }
             }
         }
         return true;
     },
-    
-    doesJSONContainAllRequiredFields: function() {    
+
+    doesJSONContainAllRequiredFields: function () {
         for (let commandName of commandNamesFromFiles) {
-            for(let requiredField of requiredFields) {
+            for (let requiredField of requiredFields) {
                 if (commandInfoJson[commandName][requiredField] === undefined) {
                     return false;
                 }
@@ -49,5 +51,7 @@ module.exports = {
         }
         return true;
     },
-    getAllRequiredFieldNames: function() { return requiredFields; }
+    getAllRequiredFieldNames: function () {
+        return requiredFields;
+    },
 };
