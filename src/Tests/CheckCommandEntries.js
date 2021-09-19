@@ -24,13 +24,15 @@ for (j in slashFiles) {
 for (i in lowerCaseSlashFiles) {
     try {
         if (
-            commandInfoJson[lowerCaseSlashFiles[i].split(".")[0]]["name"] ==
+            commandInfoJson[lowerCaseSlashFiles[i].split(".")[0]]["name"] ===
                 commandInfo[i]["name"] &&
             commandInfoJson[lowerCaseSlashFiles[i].split(".")[0]][
                 "description"
-            ] == commandInfo[i]["description"]
+            ] === commandInfo[i]["description"]
         ) {
             isCommandEntriesCorrectBol = true;
+        } else {
+            throw "Name or description inside the command is not the same as in global JSON file";
         }
     } catch (e) {
         isCommandEntriesCorrectBol = false;
@@ -40,13 +42,15 @@ for (i in lowerCaseSlashFiles) {
 // Check if command description exists in commandInfo json file
 for (j in lowerCaseSlashFiles) {
     // try{
-    try{
-    if (
-        commandInfoJson[lowerCaseSlashFiles[j].split(".")[0]]["description"] ==
-        undefined
-    ) {
-        commandDescriptionExists = false;
-    }} catch (e) {
+    try {
+        if (
+            commandInfoJson[lowerCaseSlashFiles[j].split(".")[0]][
+                "description"
+            ] === undefined
+        ) {
+            commandDescriptionExists = false;
+        }
+    } catch (e) {
         commandDescriptionExists = false;
     }
 }
@@ -54,7 +58,7 @@ for (j in lowerCaseSlashFiles) {
 for (j in lowerCaseSlashFiles) {
     try {
         if (
-            commandInfoJson[lowerCaseSlashFiles[j].split(".")[0]]["name"] ==
+            commandInfoJson[lowerCaseSlashFiles[j].split(".")[0]]["name"] ===
             undefined
         ) {
         }

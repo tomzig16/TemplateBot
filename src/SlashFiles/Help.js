@@ -24,13 +24,9 @@ module.exports = {
         .setDescription(commandsInfoJson["help"]["description"]),
     async execute(interaction) {
         let allCommandsEmbed = new MessageEmbed()
-            .setTitle(
-                commandsInfoJson["help"]["viewAllCommandsEmbed"]["title"]
-            )
+            .setTitle(commandsInfoJson["help"]["viewAllCommandsEmbed"]["title"])
             .setDescription(
-                commandsInfoJson["help"]["viewAllCommandsEmbed"][
-                    "description"
-                ]
+                commandsInfoJson["help"]["viewAllCommandsEmbed"]["description"]
             )
             .setTimestamp()
             .setFooter(interaction.guild.name, interaction.guild.iconURL());
