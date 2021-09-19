@@ -18,7 +18,7 @@ function setCommandNamesFromFiles() {
     let lowerCaseSlashFiles = [];
     for (let i in slashFiles) {
         lowerCaseSlashFiles.push(String(slashFiles[i]).toLowerCase());
-        commandNamesFromFiles.push(lowerCaseSlashFiles[j].split(".")[0]);
+        commandNamesFromFiles.push(lowerCaseSlashFiles[i].split(".")[0]);
     }
 }
 
@@ -27,24 +27,27 @@ module.exports = {
         setCommandNamesFromFiles();
     },
 
-    isCommandPropertiesSameinJSON: function() {
-        let areEntriesCorrect = true;
-        for (let commandName in commandNamesFromFiles) {
-            if (commandInfoJson[commandName]["name"] !== commandInfo[commandName]["name"] ||
-                commandInfoJson[commandName]["description"] !== commandInfo[commandName]["description"] ) {
-                return false;
+    doesCommandUseRequiredFieldsFromJSON: function() {
+        for(let botCommand of botsCommandInfo) {
+            for(let requiredField of requiredFields) {
+                if(botCommand[requiredField] !== commandInfoJson[botCommand.name][requiredField])
+                {
+                    return false;
+                }
             }
         }
         return true;
     },
+    
     doesJSONContainAllRequiredFields: function() {    
         for (let commandName of commandNamesFromFiles) {
             for(let requiredField of requiredFields) {
                 if (commandInfoJson[commandName][requiredField] === undefined) {
                     return false;
                 }
-            }        
+            }
         }
         return true;
-    }
+    },
+    getAllRequiredFieldNames: function() { return requiredFields; }
 };
