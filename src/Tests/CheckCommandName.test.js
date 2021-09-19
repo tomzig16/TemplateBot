@@ -1,5 +1,5 @@
-const checkCommandName  = require("./CheckCommandName");
+const commandEntries  = require("./CheckCommandEntries");
 
 test("Check if every command name is mentioned in commandInfo.json", () => {
-    expect(checkCommandName).toBe(true);
+    expect(commandEntries.commandNameExists).toBe(true);
 });

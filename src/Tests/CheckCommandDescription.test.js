@@ -1,5 +1,5 @@
-const checkCommandDescription  = require("./CheckCommandDescription");
+const {commandDescriptionExists}  = require("./CheckCommandEntries");
 
 test("Make sure if every command description is mentioned in commandInfo.json", () => {
-    expect(checkCommandDescription).toBe(true);
+    expect(commandDescriptionExists).toBe(true);
 });
