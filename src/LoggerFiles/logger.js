@@ -3,14 +3,21 @@ var fs = require("fs");
 class Logger {
     constructor(env) {
         this.env = env;
+        if (this.checkIfLogFileExists()) {
+            console.log('something')
+            fs.rename('logs/botlogs.log', 'logs/old_botlog.txt', () => { return; });
+        }
     }
 
     // These functions return true/false if the env is prod/test/dev
-    dev_env() {
+    checkIfLogFileExists() {
+        return fs.existsSync('logs/botlogs.log');
+    }
+    devEnv() {
         return this.env === "DEV";
     }
 
-    prod_env() {
+    prodEnv() {
         return this.env === "PROD";
     }
 
@@ -56,12 +63,12 @@ class Logger {
         level = level.toLowerCase();
 
         if (level === "warning") {
-            if (this.dev_env() || this.prod_env()) {
+            if (this.devEnv() || this.prod_env()) {
                 console.log(msg);
             }
             this.writeToLogFile("botlogs.log", msg, '[WARNING]');
         } else if (level === "info") {
-            if (this.dev_env()) {
+            if (this.devEnv()) {
                 console.log(msg);
             }
             this.writeToLogFile("botlogs.log", msg, '[INFO]')
@@ -69,9 +76,9 @@ class Logger {
 
     }
 
-    catchlog(exception) {
+    logerror(exception) {
         this.writeToLogFile("botlogs.log", exception, "[ERROR]");
-        if (this.dev_env() || this.prod_env()) {
+        if (this.devEnv() || this.prod_env()) {
             console.log(exception);
         }
     }
