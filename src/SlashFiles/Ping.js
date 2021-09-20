@@ -1,11 +1,14 @@
 // Importing necessary stuff
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { Client, Intents } = require("discord.js");
+const stringConstants = require("../Data/StringConstants");
+
+const commandInfo = stringConstants.readCommandsInfoJson;
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("ping")
-        .setDescription("Check the bot's response time 🏓️"),
+        .setName(commandInfo["ping"]["name"])
+        .setDescription(commandInfo["ping"]["description"]),
     async execute(interaction) {
         const sent = await interaction.reply({
             content: "Pinging...",

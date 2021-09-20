@@ -3,6 +3,7 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
+<<<<<<< HEAD
 const Logger = require("./LoggerFiles/Logger.js");
 
 require("dotenv").config();
@@ -10,7 +11,11 @@ require("dotenv").config();
 // Initialize Logger
 const logger = new Logger("DEV");
 
+=======
+const stringConstants = require("./Data/StringConstants");
+>>>>>>> master
 // importing tokens from env variableß
+require("dotenv").config();
 const botToken = process.env.BOT_TOKEN;
 const clientID = process.env.CLIENT_ID;
 const guildID = process.env.GUILD_ID;
@@ -24,17 +29,17 @@ botInstance.slashCommands = new Collection();
 
 // read the files
 const slashFiles = fs
-    .readdirSync("./SlashFiles")
+    .readdirSync(stringConstants.paths["slashFilesPath"])
     .filter((file) => file.endsWith(".js"));
 const eventFiles = fs
-    .readdirSync("./EventFiles")
+    .readdirSync(stringConstants.paths["eventFilesPath"])
     .filter((file) => file.endsWith(".js"));
 
 // bot configuration
 function configureBot() {
     // running event listeners
     for (const file of eventFiles) {
-        const event = require(`./EventFiles/${file}`);
+        const event = require(`${stringConstants.paths["eventFilesPath"]}${file}`);
         if (event.once) {
             botInstance.once(event.name, (...args) => event.execute(...args));
         } else {
@@ -43,11 +48,11 @@ function configureBot() {
     }
     // reading slash command files
     for (const file of slashFiles) {
-        const command = require(`./SlashFiles/${file}`);
+        const command = require(`${stringConstants.paths["slashFilesPath"]}${file}`);
         botInstance.slashCommands.set(command.data.name, command);
         botCommands.push(command.data.toJSON());
     }
-    const helpCommand = require(`./SlashFiles/Help.js`);
+    const helpCommand = require(`${stringConstants.paths.slashFilesPath}Help.js`);
     helpCommand.loadKnownCommands(botCommands);
     return true;
 }
@@ -78,9 +83,12 @@ function botRun(botToken) {
 module.exports = {
     name: "botInstance",
     // running all the functions
-    execute() {
+    execute(runBot) {
         configureBot();
-        slashCommandSetup();
-        botRun(botToken);
+        if (runBot) {
+            slashCommandSetup();
+            botRun(botToken);
+        }
     },
+    commandInfo: botCommands,
 };

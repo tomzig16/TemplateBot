@@ -1,0 +1,18 @@
+{
+    "ping": {
+        "name": "ping",
+        "description": "Check the bot's response time 🏓️"
+    },
+    "help": {
+        "name": "help",
+        "description": "Feeling lost❓️",
+        "viewAllCommandsEmbed": {
+            "title": "Commands",
+            "description": "All list of commands you can use"
+        }
+    },
+    "helloworld": {
+        "name": "helloworld",
+        "description": "Returns Hello world"
+    }
+}
