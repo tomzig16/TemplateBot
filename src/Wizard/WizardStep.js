@@ -7,8 +7,14 @@ class WizardStep {
         this.stepDescription = stepDescription;
     }
     saveStepInput(response) {
-        // Save the response as a property and in a JSON
+        // Save the response as a property.
         this.stepResponse = response;
+        this.stepInfoObject = {
+            wizardId: this.wizardId,
+            stepId: this.stepId,
+            stepTitle: this.stepTitle,
+            stepDescription: this.stepDescription,
+        };
     }
     printStepInfo() {
         console.log(this.stepInfoObject);
