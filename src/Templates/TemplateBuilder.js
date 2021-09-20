@@ -24,11 +24,4 @@ class TemplateBuiler {
     }
 }
 
-let templBuilder = new TemplateBuiler();
-templBuilder.addTemplateInfo(
-    "Whole template title",
-    "Whole template description"
-);
-templBuilder.addField("Field title", "field description", true);
-templBuilder.addField("Second field title", "field description 2", false);
-console.log(templBuilder.buildTemplate());
+module.exports = TemplateBuiler;
