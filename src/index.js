@@ -1,2 +1,2 @@
 const botInstance = require("./bot.js");
-botInstance.execute();
+botInstance.execute(true);
