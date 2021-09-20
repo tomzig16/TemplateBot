@@ -3,19 +3,12 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-<<<<<<< HEAD
-const Logger = require("./LoggerFiles/Logger.js");
-
+const logger = require("./LoggerFiles/InitializeLogger.js");
 require("dotenv").config();
 
-// Initialize Logger
-const logger = new Logger("DEV");
-
-=======
 const stringConstants = require("./Data/StringConstants");
->>>>>>> master
+
 // importing tokens from env variableß
-require("dotenv").config();
 const botToken = process.env.BOT_TOKEN;
 const clientID = process.env.CLIENT_ID;
 const guildID = process.env.GUILD_ID;
