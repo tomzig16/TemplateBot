@@ -3,7 +3,7 @@ const fs = require("fs");
 const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
-const logger = require("./LoggerFiles/InitializeLogger.js");
+const { loggerInstance } = require("./LoggerFiles/Logger.js");
 require("dotenv").config();
 
 const stringConstants = require("./Data/StringConstants");
@@ -55,13 +55,19 @@ function slashCommandSetup() {
     const rest = new REST({ version: "9" }).setToken(botToken);
     (async () => {
         try {
-            logger.log(logger.LogLevelInfo, "Started refreshing application (/) commands.");
+            loggerInstance.log(
+                loggerInstance.LogLevelInfo,
+                "Started refreshing application (/) commands."
+            );
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
-            logger.log(logger.LogLevelInfo, "Successfully reloaded application (/) commands.");
+            loggerInstance.log(
+                loggerInstance.LogLevelInfo,
+                "Successfully reloaded application (/) commands."
+            );
         } catch (error) {
-            logger.log(logger.LogLevelError, error);
+            loggerInstance.log(loggerInstance.LogLevelError, error);
         }
     })();
     return true;

@@ -4,17 +4,19 @@ class Logger {
     constructor(env) {
         this.env = env;
         this.LogLevelWarning = "warning";
-        this.LogLevelInfo = "info"
-        this.LogLevelError = "error"
+        this.LogLevelInfo = "info";
+        this.LogLevelError = "error";
 
         if (this.checkIfLogFileExists()) {
-            fs.rename('logs/botlogs.log', 'logs/old_botlog.txt', () => { return; });
+            fs.rename("logs/botlogs.log", "logs/old_botlog.txt", () => {
+                return;
+            });
         }
     }
 
     // These functions return true/false if the env is prod/test/dev
     checkIfLogFileExists() {
-        return fs.existsSync('logs/botlogs.log');
+        return fs.existsSync("logs/botlogs.log");
     }
     devEnv() {
         return this.env === "DEV";
@@ -38,26 +40,51 @@ class Logger {
         const minute = date.getMinutes();
         const seconds = ((date.getMilliseconds() % 60000) / 1000).toFixed(0);
 
-        const result = "[" + day + ":" + month + ":" + year + " " + hour + ":" + minute + ":" + seconds + "]";
+        const result =
+            "[" +
+            day +
+            ":" +
+            month +
+            ":" +
+            year +
+            " " +
+            hour +
+            ":" +
+            minute +
+            ":" +
+            seconds +
+            "]";
         return result;
     }
 
     writeToLogFile(filename, error, type) {
-        const time = this.currentTime()
+        const time = this.currentTime();
         // Check if the error is a function (ie a exception)
         if (typeof error == "object") {
             // Append to last to file
             fs.appendFile(
                 "logs/" + filename,
-                time + " " + type + " " + error.stack + "\n" + error.name + "\n" + error.message,
+                time +
+                    " " +
+                    type +
+                    " " +
+                    error.stack +
+                    "\n" +
+                    error.name +
+                    "\n" +
+                    error.message,
                 function (err) {
                     if (err) throw err;
                 }
             );
         } else {
-            fs.appendFile("logs/" + filename, time + " " + type + " " + error + "\n", function (err) {
-                if (err) throw err;
-            });
+            fs.appendFile(
+                "logs/" + filename,
+                time + " " + type + " " + error + "\n",
+                function (err) {
+                    if (err) throw err;
+                }
+            );
         }
     }
 
@@ -68,20 +95,22 @@ class Logger {
             if (this.devEnv() || this.prod_env()) {
                 console.log(msg);
             }
-            this.writeToLogFile("botlogs.log", msg, '[WARNING]');
+            this.writeToLogFile("botlogs.log", msg, "[WARNING]");
         } else if (level === this.LogLevelInfo) {
             if (this.devEnv()) {
                 console.log(msg);
             }
-            this.writeToLogFile("botlogs.log", msg, '[INFO]')
+            this.writeToLogFile("botlogs.log", msg, "[INFO]");
         } else if (level == this.LogLevelError) {
             this.writeToLogFile("botlogs.log", msg, "[ERROR]");
             if (this.devEnv() || this.prod_env()) {
                 console.log(msg);
             }
         }
-
     }
 }
 
-module.exports = Logger;
+module.exports = {
+    Logger,
+    loggerInstance: new Logger("DEV"),
+};
