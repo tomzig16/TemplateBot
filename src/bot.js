@@ -55,15 +55,25 @@ function slashCommandSetup() {
     const rest = new REST({ version: "9" }).setToken(botToken);
     (async () => {
         try {
+<<<<<<< HEAD
             loggerInstance.log(
                 loggerInstance.LogLevelInfo,
+=======
+            logger.log(
+                logger.LogLevelInfo,
+>>>>>>> 7a70e45fe543a6436d96f6156c8189cc5cfa6f35
                 "Started refreshing application (/) commands."
             );
             await rest.put(Routes.applicationGuildCommands(clientID, guildID), {
                 body: botCommands,
             });
+<<<<<<< HEAD
             loggerInstance.log(
                 loggerInstance.LogLevelInfo,
+=======
+            logger.log(
+                logger.LogLevelInfo,
+>>>>>>> 7a70e45fe543a6436d96f6156c8189cc5cfa6f35
                 "Successfully reloaded application (/) commands."
             );
         } catch (error) {

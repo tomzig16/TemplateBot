@@ -1,7 +1,9 @@
+const logger = require("../LoggerFiles/InitializeLogger.js");
+
 module.exports = {
     name: "ready",
     once: true,
     execute(client) {
-        console.log("bot has logged in successfully");
+        logger.log(logger.LogLevelInfo, "Bot has logged in successfully");
     },
 };

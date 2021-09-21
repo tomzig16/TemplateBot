@@ -43,9 +43,15 @@ class Logger {
         const result =
             "[" +
             day +
+<<<<<<< HEAD
             ":" +
             month +
             ":" +
+=======
+            "/" +
+            month +
+            "/" +
+>>>>>>> 7a70e45fe543a6436d96f6156c8189cc5cfa6f35
             year +
             " " +
             hour +
