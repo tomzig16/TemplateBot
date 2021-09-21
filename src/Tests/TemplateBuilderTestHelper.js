@@ -15,16 +15,14 @@ const templateObject = templateBuilderObj.buildTemplate();
 
 const templateFields = templateObject["fields"];
 
-if (
-    templateObject["templateInfo"]["title"] == templateTitle &&
+if (templateObject["templateInfo"]["title"] == templateTitle &&
     templateObject["templateInfo"]["description"] == templateDescription
 ) {
     templateInfoCorrect = true;
 }
 
 for (i in templateFields) {
-    if (
-        templateFields[i]["title"] == fieldTitle &&
+    if (templateFields[i]["title"] == fieldTitle &&
         templateFields[i]["description"] == fieldDescription
     ) {
         templateFieldsCorrect = true;
