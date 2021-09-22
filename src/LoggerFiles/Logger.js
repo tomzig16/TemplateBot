@@ -38,7 +38,7 @@ class Logger {
         const day = date.getDate();
         const hour = date.getHours();
         const minute = date.getMinutes();
-        const seconds = ((date.getMilliseconds() % 60000) / 1000).toFixed(0);
+        const seconds = date.getSeconds();
 
         const result = `[${day}/${month}/${year} ${hour}:${minute}:${seconds}]`
         return result;
