@@ -8,7 +8,7 @@ class Logger {
         this.LogLevelError = "error";
 
         if (this.checkIfLogFileExists()) {
-            fs.rename("logs/botlogs.log", "logs/old_botlog.txt", () => {
+            fs.rename("logs/botlogs.log", "logs/old_botlog.log", () => {
                 return;
             });
         }
@@ -40,23 +40,7 @@ class Logger {
         const minute = date.getMinutes();
         const seconds = ((date.getMilliseconds() % 60000) / 1000).toFixed(0);
 
-        const result =
-            "[" +
-            day +
-            ":" +
-            month +
-            ":" +
-            "/" +
-            month +
-            "/" +
-            year +
-            " " +
-            hour +
-            ":" +
-            minute +
-            ":" +
-            seconds +
-            "]";
+        const result = `[${day}/${month}/${year} ${hour}:${minute}:${seconds}]`
         return result;
     }
 
@@ -115,5 +99,5 @@ class Logger {
 
 module.exports = {
     Logger,
-    loggerInstance: new Logger("DEV"),
+    logger: new Logger("DEV"),
 };
