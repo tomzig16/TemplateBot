@@ -1,3 +1,4 @@
+const { check } = require("prettier");
 const templateBuilder = require("../Templates/TemplateBuilder");
 const templateBuilderObj = new templateBuilder();
 
@@ -15,20 +16,22 @@ const templateObject = templateBuilderObj.buildTemplate();
 
 const templateFields = templateObject["fields"];
 
-if (templateObject["templateInfo"]["title"] == templateTitle &&
-    templateObject["templateInfo"]["description"] == templateDescription
-) {
-    templateInfoCorrect = true;
-}
-
-for (i in templateFields) {
-    if (templateFields[i]["title"] == fieldTitle &&
-        templateFields[i]["description"] == fieldDescription
+function checkTemplateBuilderInfo() {
+    if (templateObject["templateInfo"]["title"] == templateTitle &&
+        templateObject["templateInfo"]["description"] == templateDescription
     ) {
-        templateFieldsCorrect = true;
+        templateInfoCorrect = true;
+    }
+
+    for (let i in templateFields) {
+        if (templateFields[i]["title"] == fieldTitle &&
+            templateFields[i]["description"] == fieldDescription
+        ) {
+            templateFieldsCorrect = true;
+        }
     }
 }
-
+checkTemplateBuilderInfo();
 module.exports = {
     templateFieldsCorrect: templateFieldsCorrect,
     templateInfoCorrect: templateInfoCorrect,

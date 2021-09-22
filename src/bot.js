@@ -49,7 +49,9 @@ function configureBot() {
 
 // setup slash commands
 function slashCommandSetup() {
-    const rest = new REST({ version: "9" }).setToken(botToken);
+    const rest = new REST({
+        version: "9",
+    }).setToken(botToken);
     (async () => {
         try {
             console.log("Started refreshing application (/) commands.");

@@ -33,6 +33,8 @@ module.exports = {
         for (let command of commandsInfo) {
             allCommandsEmbed.addField(command.name, command.description);
         }
-        interaction.reply({ embeds: [allCommandsEmbed] });
+        interaction.reply({
+            embeds: [allCommandsEmbed],
+        });
     },
 };
