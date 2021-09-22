@@ -1,4 +1,4 @@
-const {logger} = require("../LoggerFiles/Logger.js");
+const { logger } = require("../LoggerFiles/Logger.js");
 
 module.exports = {
     name: "ready",

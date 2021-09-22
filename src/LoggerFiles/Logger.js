@@ -40,7 +40,7 @@ class Logger {
         const minute = date.getMinutes();
         const seconds = date.getSeconds();
 
-        const result = `[${day}/${month}/${year} ${hour}:${minute}:${seconds}]`
+        const result = `[${day}/${month}/${year} ${hour}:${minute}:${seconds}]`;
         return result;
     }
 
